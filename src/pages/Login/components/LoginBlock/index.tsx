@@ -152,7 +152,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
               <Checkbox name="autoLogin" className={styles.infoLeft} >自动登录</Checkbox>
             </Item>
             <div>
-              <a href="/" className={styles.link}>忘记密码</a>
+              {/* <a href="/" className={styles.link}>忘记密码</a> */}
             </div>
           </p>
 
@@ -167,8 +167,8 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
             </Form.Submit>
           </Item>
           <p className={styles.infoLine}>
-            <div className={styles.infoLeft}>其他登录方式 <Icon type="atm" size="s"/> <Icon type="atm" size="s" /> <Icon type="atm" size="s" /></div>
-            <a href="/" className={styles.link}>注册账号</a>
+            {/* <div className={styles.infoLeft}>其他登录方式 <Icon type="atm" size="s"/> <Icon type="atm" size="s" /> <Icon type="atm" size="s" /></div> */}
+            {/* <a href="/" className={styles.link}>注册账号</a> */}
           </p>
         </Form>
       </div>
