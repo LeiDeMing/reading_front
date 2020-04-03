@@ -22,16 +22,19 @@
   ],
   "dependencies": {
     "@alifd/next": "^1.19.4",
+    "@alifd/theme-design-pro": "^0.x",
+    "@antv/data-set": "^0.10.2",
+    "@koa/cors": "^2.2.3",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
+    "axios": "^0.19.2",
+    "bizcharts": "^3.5.6",
+    "koa-bodyparser": "^4.3.0",
     "moment": "^2.24.0",
+    "prop-types": "^15.5.8",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-intl": "^2.8.0",
-    "@antv/data-set": "^0.10.2",
-    "bizcharts": "^3.5.6",
-    "@alifd/theme-design-pro": "^0.x",
-    "prop-types": "^15.5.8",
-    "@types/react": "^16.9.13",
-    "@types/react-dom": "^16.9.4"
+    "react-intl": "^2.8.0"
   },
   "devDependencies": {
     "@ice/spec": "^1.0.0",

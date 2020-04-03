@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Message, Form, Divider, Checkbox, Icon } from '@alifd/next';
-
+import { request } from 'ice'
 import { useInterval } from './utils';
 import styles from './index.module.scss';
 
@@ -58,12 +58,16 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
     checkRunning(true);
   };
 
-  const handleSubmit = (values: IDataSource, errors: []) => {
+  const handleSubmit = async (values: IDataSource, errors: []) => {
     if (errors) {
       console.log('errors', errors);
       return;
     }
     console.log('values:', values);
+    const res = await request.post('http://172.16.161.206:3300/api/reading_front/user/login', {
+      ...values
+    })
+    console.log(res)
     Message.success('登录成功');
   };
 
@@ -71,20 +75,20 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
     <Item format="tel" required requiredMessage="必填" asterisk={false} >
       <Input
         name="phone"
-        innerBefore={<span className={styles.innerBeforeInput}>+86<span className={styles.line}/></span>}
+        innerBefore={<span className={styles.innerBeforeInput}>+86<span className={styles.line} /></span>}
         maxLength={20}
         placeholder="手机号"
       />
     </Item>
-    <Item required requiredMessage="必填" style={{marginBottom: 0}}>
+    <Item required requiredMessage="必填" style={{ marginBottom: 0 }}>
       <Input
         name="code"
         innerAfter={<span className={styles.innerAfterInput}>
-          <span className={styles.line}/>
+          <span className={styles.line} />
           <Form.Submit
             text
             type="primary"
-            style={{width: 64}}
+            style={{ width: 64 }}
             disabled={!!isRunning}
             validate={['phone']}
             onClick={sendCode}
@@ -107,7 +111,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
         placeholder="用户名"
       />
     </Item>
-    <Item required requiredMessage="必填" style={{marginBottom: 0}}>
+    <Item required requiredMessage="必填" style={{ marginBottom: 0 }}>
       <Input.Password
         name="password"
         htmlType="password"
@@ -134,29 +138,29 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
             alt="logo"
           />
         </a>
-        <p className={styles.desc}>
-          <span onClick={byAccount} className={ isPhone || styles.active }>账户密码登录</span>
+        <div className={styles.desc}>
+          <span onClick={byAccount} className={isPhone || styles.active}>账户密码登录</span>
           <Divider direction="ver" />
-          <span onClick={byForm} className={ isPhone && styles.active }>手机号登录</span>
-        </p>
+          <span onClick={byForm} className={isPhone && styles.active}>手机号登录</span>
+        </div>
 
         <Form
           value={postData}
           onChange={formChange}
           size="large"
         >
-          { isPhone ? phoneForm : accountForm }
+          {isPhone ? phoneForm : accountForm}
 
-          <p className={styles.infoLine}>
-            <Item style={{marginBottom: 0}}>
+          <div className={styles.infoLine}>
+            <Item style={{ marginBottom: 0 }}>
               <Checkbox name="autoLogin" className={styles.infoLeft} >自动登录</Checkbox>
             </Item>
             <div>
               {/* <a href="/" className={styles.link}>忘记密码</a> */}
             </div>
-          </p>
+          </div>
 
-          <Item style={{marginBottom: 10}}>
+          <Item style={{ marginBottom: 10 }}>
             <Form.Submit
               type="primary"
               onClick={handleSubmit}
@@ -166,10 +170,10 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
               登录
             </Form.Submit>
           </Item>
-          <p className={styles.infoLine}>
+          <div className={styles.infoLine}>
             {/* <div className={styles.infoLeft}>其他登录方式 <Icon type="atm" size="s"/> <Icon type="atm" size="s" /> <Icon type="atm" size="s" /></div> */}
             {/* <a href="/" className={styles.link}>注册账号</a> */}
-          </p>
+          </div>
         </Form>
       </div>
     </div>
