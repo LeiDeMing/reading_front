@@ -64,7 +64,7 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
       return;
     }
     console.log('values:', values);
-    const res = await request.post('http://172.16.161.206:3300/api/reading_front/user/login', {
+    const res = await request.post('http://192.168.43.157:3300/api/reading_front/user/login', {
       ...values
     })
     console.log(res)
